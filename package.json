@@ -1,0 +1,34 @@
+{
+  "name": "@awcodes/filament-plugin-purge",
+  "version": "1.0.0",
+  "description": "A purge tool to keep your Filament plugin from bloating the styles provided by Filament out of the box.",
+  "keywords": [
+    "Filament",
+    "Plugin",
+    "Utility"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awcodes/filament-plugin-purge"
+  },
+  "main": "filament-purge.js",
+  "bin": {
+    "filament-purge": "./filament-purge.js"
+  },
+  "scripts": {
+    "test": "filament-purge -i tests/styles/plugin.css -o tests/output/plugin.css"
+  },
+  "author": {
+    "name": "Adam Weston",
+    "email": "awcodes1@gmail.com",
+    "url": "https://www.awcodes.com"
+  },
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^5.0.1",
+    "css-tree": "^2.2.1",
+    "ora": "^6.1.2"
+  }
+}
