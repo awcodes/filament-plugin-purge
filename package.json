@@ -1,7 +1,7 @@
 {
   "name": "@awcodes/filament-plugin-purge",
   "version": "1.0.0",
-  "description": "A purge tool to keep your Filament plugin from bloating the styles provided by Filament out of the box.",
+  "description": "A purge tool to keep your Filament plugin from bloating / duplicating Filament's default styles.",
   "keywords": [
     "Filament",
     "Plugin",
