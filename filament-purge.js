@@ -84,6 +84,16 @@ axios
       },
     });
 
+    csstree.walk(pluginAst, {
+      enter: function (node, item, list) {
+          if (list && node?.block?.children?.head == null) {
+            if (node.block) {
+              list.replace(item, node.block.children);
+            }
+          }
+      },
+    });
+
     fs.writeFileSync(outputFile, csstree.generate(pluginAst));
 
     spinner.stopAndPersist({
