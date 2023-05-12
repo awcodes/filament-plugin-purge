@@ -8,6 +8,7 @@ import ora from "ora";
 
 const inputIndex = process.argv.indexOf("-i");
 const outputIndex = process.argv.indexOf("-o");
+const version = process.argv.indexOf("-v");
 
 if (inputIndex === -1) {
   console.log(chalk.white.bgRed("\nNo Input provided."));
@@ -19,16 +20,26 @@ if (outputIndex === -1) {
   process.exit(1);
 }
 
+const inputFile = process.argv[inputIndex + 1];
+const outputFile = process.argv[outputIndex + 1];
+const versionNumber = version !== -1 ? process.argv[version + 1] : "2.x";
+const urls = {
+  "2.x": "https://raw.githubusercontent.com/filamentphp/filament/2.x/packages/admin/dist/app.css",
+  "3.x": "https://raw.githubusercontent.com/filamentphp/filament/3.x/packages/app/dist/theme.css",
+};
+
+if (!urls.hasOwnProperty(versionNumber)) {
+  console.log(chalk.white.bgRed("\nInvalid Filament version."));
+  process.exit(1);
+}
+
 const spinner = ora({
   text: "Purging plugin file",
   color: "yellow",
 }).start();
 
-const inputFile = process.argv[inputIndex + 1];
-const outputFile = process.argv[outputIndex + 1];
-
 axios
-  .get("https://raw.githubusercontent.com/filamentphp/filament/2.x/packages/admin/dist/app.css")
+  .get(urls[versionNumber])
   .then(({ data }) => {
     const filamentStylesRaw = data;
     const pluginStylesRaw = fs.readFileSync(inputFile, "utf8");
@@ -86,11 +97,11 @@ axios
 
     csstree.walk(pluginAst, {
       enter: function (node, item, list) {
-          if (list && node?.block?.children?.head == null) {
-            if (node.block) {
-              list.replace(item, node.block.children);
-            }
+        if (list && node?.block?.children?.head == null) {
+          if (node.block) {
+            list.replace(item, node.block.children);
           }
+        }
       },
     });
 
