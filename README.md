@@ -26,6 +26,9 @@ filament-purge -i path/to/input.css -o path/to/output.css
 
 * -i (Path to the plugin css file to be purged)
 * -o (Path to save the purged plugin file to)
+* -v (Flag to support v3 plugin development)
+    * defaults to '2.x'
+    * options are '2.x' or '3.x'
 
 ## License
 

@@ -26,7 +26,7 @@
   "type": "module",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.4.0",
     "chalk": "^5.0.1",
     "css-tree": "^2.2.1",
     "ora": "^6.1.2"
