@@ -25,7 +25,7 @@ const outputFile = process.argv[outputIndex + 1];
 const versionNumber = version !== -1 ? process.argv[version + 1] : "2.x";
 const urls = {
   "2.x": "https://raw.githubusercontent.com/filamentphp/filament/2.x/packages/admin/dist/app.css",
-  "3.x": "https://raw.githubusercontent.com/filamentphp/filament/3.x/packages/app/dist/theme.css",
+  "3.x": "https://raw.githubusercontent.com/filamentphp/filament/3.x/packages/panels/dist/theme.css",
 };
 
 if (!urls.hasOwnProperty(versionNumber)) {
