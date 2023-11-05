@@ -89,7 +89,7 @@ axios
         if (node.type == "Rule" && !diffedStyles.includes(node.prelude.value) && node.prelude.value.startsWith(".")) {
           list.remove(item);
         }
-        if (node.type == "Atrule" && !diffedKeyframes.includes(node.prelude.value) && node.name.includes("keyframes")) {
+        if (node.type == "Atrule" && node.name.includes("keyframes") && !diffedKeyframes.includes(node.prelude.value)) {
           list.remove(item);
         }
       },
